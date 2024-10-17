@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0
+}
+
+body{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25rem;
+}
+
+header{
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding: 16px;
+    text-align: center;
+    background-color: rgb(0,100,200);
+}
+
+a{
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    background-color: rgba(240, 248, 255, 0.425);
+}
+h1{
+    margin: 16px 0 0 16px;
+}
+button{
+    padding: 16px;
+    text-align: center;
+    background-color: rgb(0,100,200);
+    border-radius: 8px;
+    color: white;
+}
+/* form{
+    margin: 16px;
+} */
+
+label, input, button, select{
+    margin-left: 30px;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
