@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleTarefa.css">
+    <script src="tarefa.js" defer></script>
     <title>Sistema</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -20,6 +24,56 @@
         <h1>Tarefas</h1>
         <br>
 
+        <div class="list-container">
+
+            <div class="list-tarefas">
+                <p><strong>A Fazer</strong></p>
+                
+                <div class="card">
+                    <div class="a-fazer">
+                        
+                        <p><strong>Tipo: </strong>Tarefa 1</p>
+                        <p><strong>Area: </strong>Tecnologia</p>
+                        <p><strong>Prioridade: </strong>Baixa 1</p>
+                        <p><strong>Usuário: </strong>Ana</p>
+                        <div class="btn-alterar">
+                            <buttun id="editar">Editar</buttun>
+                            <buttun id="excluir">Excluir</buttun>
+                        </div>
+                        <p><strong>Status: </strong></p>
+                        <div class="">
+                            <buttun data-status="Fazendo">Fazendo</buttun>
+                            <buttun data-status="Pronto">Pronto</buttun>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="list-tarefas">
+                <p><strong>Fazendo</strong></p>
+
+                <div class="card">
+                    <div class="fazendo">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="list-tarefas">
+                <p><strong>Pronto</strong></p>
+
+
+                <div class="card">
+                    <div class="pronto">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 </body>
+
 </html>
