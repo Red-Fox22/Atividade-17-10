@@ -17,7 +17,7 @@ cadastrarUsuario.addEventListener('click', (e)=>{
         headers:{
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(valores)
+        body: JSON.stringify(dados)
     })
     .then(resposta => resposta.json())
     .then(dados =>{
