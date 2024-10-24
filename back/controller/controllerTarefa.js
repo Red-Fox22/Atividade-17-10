@@ -12,13 +12,17 @@ const cadastrarTarefa = async (req, res) => {
     }
 }
 const listarTarefa = async (req, res) => {
-    try {
-        const pesq = Tarefa.findAll()
-
-    } catch (err) {
-        console.error('Erro ao listar tarefas', err)
-        res.status(500).json({ message: 'Erro ao listar tarefas' })
+        try {
+            const post = await Tarefa.findAll({
+                include: {
+                    model: Usuario,
+                    as: 'usuario'
+                }
+            })
+            res.status(200).json(post)
+        } catch (err) {
+            res.status(500).json({ message: 'Erro na listagem das Tarefas' })
+        }
     }
-}
 
-module.exports = { cadastrarTarefa }
+module.exports = { cadastrarTarefa, listarTarefa }
