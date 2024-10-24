@@ -1,18 +1,18 @@
-// function gerarBotao(status){
-//     if(status === "A Fazer"){
-//         return `
-//          <button data-status="Fazendo">Fazendo</button>
-//          <button data-status="Pronto">Pronto</button>`
-//     }else if(status === "Fazendo"){
-//         return `
-//         <button data-status="A Fazer">A Fazer</button>
-//         <button data-status="Pronto">Pronto</button>`
-//     }else if(status === "Pronto"){
-//         return `
-//         <button data-status="A Fazer">A Fazer</button>
-//         <button data-status="Fazendo">Fazendo</button>`
-//     }
-// }
+function gerarBotao(status) {
+    if (status === "A Fazer") {
+        return `
+         <button data-status="Fazendo">Fazendo</button>
+         <button data-status="Pronto">Pronto</button>`
+    } else if (status === "Fazendo") {
+        return `
+        <button data-status="A Fazer">A Fazer</button>
+        <button data-status="Pronto">Pronto</button>`
+    } else if (status === "Pronto") {
+        return `
+        <button data-status="A Fazer">A Fazer</button>
+        <button data-status="Fazendo">Fazendo</button>`
+    }
+}
 
 function criarCard(tarefa) {
     const cartao = document.createElement('div')
@@ -32,22 +32,26 @@ function criarCard(tarefa) {
         ${gerarBotao(tarefa.status)}
     </div>
     `
+
+    const editar = cartao.querySelector('#editar')
+    console.log(editar)
+    editar.addEventListener("click", () => {
+        editarTarefa()
+    })
+    const excluir = cartao.querySelector('#excluir')
+    //console.log(excluir)
+    excluir.addEventListener("click", () => {
+        excluirTarefa()
+    })
+
+    const btnStatus = cartao.querySelectorAll('button[data-status]')
+    console.log(btnStatus)
+
+
     return cartao
 }
 
-const editar = cartao.querySelector('#editar')
-console.log(editar)
-editar.addEventListener("click", () => {
-    editarTarefa()
-})
-const excluir = cartao.querySelector('#excluir')
-//console.log(excluir)
-excluir.addEventListener("click", () => {
-    excluirTarefa()
-})
 
-const btnStatus = cartao.querySelectorAll('button[data-status]')
-console.log(btnStatus)
 
 function carregarTarefas() {
     fetch('http://localhost:3000/tarefas')
