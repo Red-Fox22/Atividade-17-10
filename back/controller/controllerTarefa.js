@@ -11,5 +11,14 @@ const cadastrarTarefa = async (req, res) => {
         res.status(500).json({ message: 'Erro ao cadastrar a tarefa' })
     }
 }
+const listarTarefa = async (req, res) => {
+    try {
+        const pesq = Tarefa.findAll()
+
+    } catch (err) {
+        console.error('Erro ao listar tarefas', err)
+        res.status(500).json({ message: 'Erro ao listar tarefas' })
+    }
+}
 
 module.exports = { cadastrarTarefa }

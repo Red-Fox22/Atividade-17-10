@@ -23,6 +23,7 @@ app.post('/usuario', controllerUsuario.cadastrarUsuario)
 /*------------------------------------------------*/
 
 app.post('/tarefa', controllerTarefa.cadastrarTarefa)
+app.get('/tarefa', controllerTarefa.cadastrarTarefa)
 
 /*------------------------------------------------*/
 
