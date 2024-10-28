@@ -1,4 +1,4 @@
-const { Tarefa } = require('../model/associacao')
+const { Tarefa,Usuario } = require('../model/associacao')
 
 const cadastrarTarefa = async (req, res) => {
     const valores = req.body

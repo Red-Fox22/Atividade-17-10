@@ -57,6 +57,7 @@ function carregarTarefas() {
     fetch('http://localhost:3000/tarefas')
         .then(resposta => resposta.json())
         .then(tarefas => {
+            console.log(tarefas)
             tarefas.forEach(tarefa => {
                 const card = criarCard(tarefa)
                 const coluna = document.getElementById(`${tarefa.status.toLowerCase().replace(' ', '-')}`)

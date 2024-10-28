@@ -19,12 +19,12 @@ app.use(cors())
 /*------------------------------------------------*/
 
 app.post('/usuario', controllerUsuario.cadastrarUsuario)
-app.get('/usuario', controllerUsuario.listarUsuario)
+app.get('/usuarios', controllerUsuario.listarUsuario)
 
 /*------------------------------------------------*/
 
 app.post('/tarefa', controllerTarefa.cadastrarTarefa)
-app.get('/tarefa', controllerTarefa.listarTarefa)
+app.get('/tarefas', controllerTarefa.listarTarefa)
 
 /*------------------------------------------------*/
 
