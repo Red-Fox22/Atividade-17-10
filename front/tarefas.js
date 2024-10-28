@@ -1,3 +1,23 @@
+function excluirTarefa(codTarefa) {
+    console.log('Excluido Tarefa')
+    console.log(codTarefa)
+    if (confirm('Tem Certeza que Tu queres Excluir?') === true){
+        fetch(`http://localhost:3000/tarefa/${codTarefa}`, {
+            method: 'DELETE'
+        })
+        .then(resposta => resposta.json())
+        .then(dados =>{
+            console.log(dados.message)
+            if(dados.message){
+                carregarTarefas()
+            }
+        })
+        .catch((err)=>{
+            console.error('Não foi Possível Excluir a Tarefa', err)
+        })
+    }
+}
+
 function gerarBotao(status) {
     if (status === "A Fazer") {
         return `
@@ -44,16 +64,19 @@ function criarCard(tarefa) {
         excluirTarefa()
     })
 
-    const btnStatus = cartao.querySelectorAll('button[data-status]')
-    console.log(btnStatus)
-
 
     return cartao
 }
 
 
 
+
 function carregarTarefas() {
+
+document.getElementById('a-fazer').innerHTML = ''
+document.getElementById('fazendo').innerHTML = ''
+document.getElementById('pronto').innerHTML = ''
+
     fetch('http://localhost:3000/tarefas')
         .then(resposta => resposta.json())
         .then(tarefas => {

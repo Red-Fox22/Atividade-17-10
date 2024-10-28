@@ -25,6 +25,7 @@ app.get('/usuarios', controllerUsuario.listarUsuario)
 
 app.post('/tarefa', controllerTarefa.cadastrarTarefa)
 app.get('/tarefas', controllerTarefa.listarTarefa)
+app.delete('/tarefa/:id', controllerTarefa.apagarTarefa)
 
 /*------------------------------------------------*/
 

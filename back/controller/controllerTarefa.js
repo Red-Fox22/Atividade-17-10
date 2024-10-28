@@ -1,4 +1,4 @@
-const { Tarefa,Usuario } = require('../model/associacao')
+const { Tarefa, Usuario } = require('../model/associacao')
 
 const cadastrarTarefa = async (req, res) => {
     const valores = req.body
@@ -12,17 +12,25 @@ const cadastrarTarefa = async (req, res) => {
     }
 }
 const listarTarefa = async (req, res) => {
-        try {
-            const post = await Tarefa.findAll({
-                include: {
-                    model: Usuario,
-                    as: 'usuario'
-                }
-            })
-            res.status(200).json(post)
-        } catch (err) {
-            res.status(500).json({ message: 'Erro na listagem das Tarefas' })
-        }
-    }
+    try {
+        const pesq = await Tarefa.findAll({
+            include: {
+                model: Usuario,
+                as: 'usuario'
+            }
+        })
 
-module.exports = { cadastrarTarefa, listarTarefa }
+        res.status(200).json(pesq)
+
+    } catch (err) {
+        res.status(500).json({ message: 'Erro na listagem das Tarefas' })
+    }
+}
+
+const apagarTarefa = async (req, res)=>{
+    const valor = req.params
+    console.log(valor)
+    res.status(200).json({message: "Tarefa Excluida"})
+}
+
+    module.exports = { cadastrarTarefa, listarTarefa, apagarTarefa }
