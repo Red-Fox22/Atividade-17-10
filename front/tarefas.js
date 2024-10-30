@@ -52,23 +52,49 @@ function criarCard(tarefa) {
         ${gerarBotao(tarefa.status)}
     </div>
     `
-
-    const editar = cartao.querySelector('#editar')
-    console.log(editar)
-    editar.addEventListener("click", () => {
-        editarTarefa()
-    })
     const excluir = cartao.querySelector('#excluir')
     //console.log(excluir)
     excluir.addEventListener("click", () => {
-        excluirTarefa()
+        excluirTarefa(tarefa.codTarefa)
     })
+
+    const editar = cartao.querySelector('#editar')
+    //console.log(editar)
+    editar.addEventListener("click", () => {
+        editarTarefa()
+    })
+    // const btnStatus = cartao.querySelector('#button[data-status]')
+    // //console.log(btnStatus)
+    // btnStatus.addEventListener("click", () => {
+        
+    // })
 
 
     return cartao
 }
 
+function editarTarefa(){
+    console.log('Editando Tarefa')
+}
 
+function excluirTarefa(codTarefa){
+    const apaga = confirm('Deseja apagar a tarefa?')
+    if(apaga){
+        fetch(`http://localhost:3000/tarefa/${codTarefa}`, {
+            method: 'DELETE'
+        })
+        .then(resposta => resposta.json())
+        .then(dados =>{
+            console.log(dados)
+            if(dados.message){
+                carregarTarefas()
+            }
+        })
+        .catch((err)=>{
+            console.error('Erro ao Excluir os Dados', err)
+        })
+    }
+}
 
 
 function carregarTarefas() {
@@ -95,4 +121,4 @@ document.getElementById('pronto').innerHTML = ''
 
 }
 
-window.onload = carregarTarefas
+window.onload = carregarTarefas;

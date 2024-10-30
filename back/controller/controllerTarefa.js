@@ -27,10 +27,16 @@ const listarTarefa = async (req, res) => {
     }
 }
 
-const apagarTarefa = async (req, res)=>{
+const apagarTarefa = async (req, res) => {
     const valor = req.params
     console.log(valor)
-    res.status(200).json({message: "Tarefa Excluida"})
+    try {
+        const pesq = Tarefa.destroy({where:{ codTarefa: valor.id} })
+        res.status(200).json({ message: "Tarefa Excluida" })
+    } catch (err) {
+        console.error('Erro ao Excluir tarefas', err)
+        res.status(500).json({ message: "Erro ao Excluir tarefas" })
+    }
 }
 
-    module.exports = { cadastrarTarefa, listarTarefa, apagarTarefa }
+module.exports = { cadastrarTarefa, listarTarefa, apagarTarefa }
