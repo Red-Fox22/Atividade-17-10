@@ -39,4 +39,16 @@ const apagarTarefa = async (req, res) => {
     }
 }
 
-module.exports = { cadastrarTarefa, listarTarefa, apagarTarefa }
+const atualizarStatus = async(req, res)=>{
+    const valores = req.body
+    console.log(valores)
+    try{
+        const pesq = await Tarefa.update({status: valores.status}, {where: {codTarefa: valores.codTarefa}})
+        res.status(200).json({message: "Dados atualizados com sucesso!"})
+    }catch(err){
+        console.error('Erro ao atualizar o status da tarefa', err)
+        res.status(500).json({message: "Erro ao atualizar o status da tarefa"})
+    }
+}
+
+module.exports = { cadastrarTarefa, listarTarefa, apagarTarefa, atualizarStatus }

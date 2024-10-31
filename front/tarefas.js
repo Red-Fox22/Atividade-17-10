@@ -63,11 +63,15 @@ function criarCard(tarefa) {
     editar.addEventListener("click", () => {
         editarTarefa()
     })
-    // const btnStatus = cartao.querySelector('#button[data-status]')
-    // //console.log(btnStatus)
-    // btnStatus.addEventListener("click", () => {
-        
-    // })
+    const btnStatus = cartao.querySelectorAll('button[data-status]')
+    //console.log(btnStatus)
+    btnStatus.forEach(btn =>{
+        btn.addEventListener('click', ()=>{
+            const novoStatus = btn.getAttribute('data-status')
+            //console.log(novoStatus)
+            atualizarStatus(novoStatus, tarefa.codTarefa)
+        })
+    })
 
 
     return cartao
@@ -76,6 +80,32 @@ function criarCard(tarefa) {
 function editarTarefa(){
     console.log('Editando Tarefa')
 }
+
+function atualizarStatus(status, codTarefa){
+    console.log(status, codTarefa)
+    const valores = {
+        status: status,
+        codTarefa: codTarefa
+    }
+    fetch('http://localhost:3000/tarefa', {
+        method: "PUT",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(valores)
+    })
+    .then(resposta => resposta.json())
+    .then(dados =>{
+        console.log(dados)
+        if(dados.message){
+            carregarTarefas()
+        }
+    })
+    .catch((err)=>{
+        console.error("Não foi possível Atualizar o Status", err)
+    })
+}
+
 
 function excluirTarefa(codTarefa){
     const apaga = confirm('Deseja apagar a tarefa?')
